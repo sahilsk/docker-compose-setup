@@ -44,7 +44,6 @@ function replyWith(res, status='', data={}){
         default:
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.end('Hello,World');
-            break;
     }
 }
 

@@ -12,6 +12,10 @@ services:
      options:
       max-size: "200k"
       max-file: "10"
+    scale: 1
+    mem_limit: 300m
+    mem_reservation: 100m
+    cpus: 0.5
 
   webnode:
     build: ./node
@@ -19,14 +23,21 @@ services:
      - "3000"
     volumes:
      - ./node/app.js:/usr/src/app/app.js
+     - ./node/process.yml:/usr/src/app/process.yml
     #entrypoint: ["npm", "run", "app"]
     logging:
      driver: json-file
      options:
       max-size: "200k"
       max-file: "10"
+    restart: on-failure
     environment:
       APP_PORT: 3000
+      NODE_NV: development
+    scale: 1
+    mem_limit: 300m
+    mem_reservation: 100m
+    cpus: 0.5
 
   nginx:
     build: ./nginx/
@@ -45,6 +56,10 @@ services:
      options:
       max-size: "200k"
       max-file: "10"
+    restart: on-failure
+    mem_limit: 300m
+    mem_reservation: 100m
+    cpus: 0.5
 
   redis:
     image: "redis:alpine"
@@ -57,11 +72,12 @@ services:
      options:
       max-size: "200k"
       max-file: "10"
+    restart: on-failure
     mem_limit: 300m
     mem_reservation: 100m
     cpus: 0.5
 
-  ubuntu:
+  debug:
     image: "ubuntu:latest"
 
 volumes:

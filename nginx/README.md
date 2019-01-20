@@ -10,6 +10,20 @@ Files included in this folder
 - **ssl** : contains ssl security parameters along with self-signed certificates. Ideally, they should be stored in secure places like encrypted s3 or azure kv vault.
 
 
+How-to edit configuration
+---
+
+- edit `mysite.template`
+
+
+Test configuration
+---
+
+    >  docker-compose run nginx  nginx -t
+    nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+    nginx: configuration file /etc/nginx/nginx.conf test is successful
+
+
 How to generate self-signed certificates with different domain?
 ---
 

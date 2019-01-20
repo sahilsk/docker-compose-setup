@@ -21,6 +21,36 @@ To run all containers in the background ie. detached
 Each service specific instructions are in there respective README file. Refer them for further information on their working.
 
 
+
+Log rotation
+---
+
+Docker logging driver: `json-file` is being used. And logrotation using following parameters is set
+
+```
+    logging:
+     driver: json-file
+     options:
+      max-size: "200k"
+      max-file: "10"
+
+```
+
+Restart policy
+---
+
+Containers will be restarted on failure.
+
+```
+    restart: on-failure
+```
+
+Scale up
+---
+
+
+    > docker-compose up --scale webnode=1 -d
+
 Test
 ---
 

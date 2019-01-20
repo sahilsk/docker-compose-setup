@@ -34,12 +34,19 @@ server {
     
     include snippets/ssl-params.conf;
 
+    #*********************************************
+    #This is to avoid caching during scale-out
+    #*********************************************
+    set $upstream_endpoint  http://webnode:3000;
+
     
     location / {
         include snippets/proxy-params.conf;
         resolver 127.0.0.11 valid=10s;
 
-        proxy_pass http://backend/;
+        #proxy_pass http://backend/;
+        proxy_pass $upstream_endpoint;
+
     }
 
 }
