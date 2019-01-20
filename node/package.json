@@ -1,0 +1,16 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "app": "yarn run pm2 start process.yml --no-daemon"
+  },
+  "dependencies": {
+    "pm2": "^3.2.9",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}

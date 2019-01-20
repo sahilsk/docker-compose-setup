@@ -1,0 +1,8 @@
+apps:
+  - script   : app.js
+    instances: 4
+    exec_mode: cluster
+    out_file: /dev/null
+    error_file: /dev/null
+    merge_logs: true
+    watch: true
